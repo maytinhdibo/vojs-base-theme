@@ -96,9 +96,9 @@
         <div class="header">
             Abstracting and Indexing
         </div>
-        <a href="https://vcgate.vnu.edu.vn/statistics/journals/nghien-cuu-va-thuc-hanh-nhi-khoa"><img
+        <a href="https://vcgate.vnu.edu.vn/"><img
                     src="/img/vcgate.png"></a>
-        <a href="https://scholar.google.com.vn/citations?hl=vi&amp;user=5MkI3-MAAAAJ"><img src="/img/gscholar.png"></a>
+        <a href="https://scholar.google.com.vn/"><img src="/img/gscholar.png"></a>
     </div>
 
     {* Sidebars *}
