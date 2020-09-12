@@ -303,14 +303,12 @@
                 {/if}
 
                 {* Keywords *}
-                {if !empty($keywords[$currentLocale])}
+                {if !empty($publication->getLocalizedData('keywords'))}
                     <div class="article-keywords">
                         <h2>{translate key="article.subject"}</h2>
                         <p>
-                            {foreach from=$keywords item=keyword}
-                                {foreach name=keywords from=$keyword item=keywordItem}
-                                    {$keywordItem|escape}{if !$smarty.foreach.keywords.last}, {/if}
-                                {/foreach}
+                            {foreach name="keywords" from=$publication->getLocalizedData('keywords') item="keyword"}
+                                {$keyword|escape}{if !$smarty.foreach.keywords.last}{translate key="common.commaListSeparator"}{/if}
                             {/foreach}
                         </p>
                     </div>
