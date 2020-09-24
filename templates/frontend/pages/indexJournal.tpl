@@ -92,15 +92,6 @@
         </div>
     {/if}
 
-    <div style="text-align: center" class="index-card">
-        <div class="header">
-            Abstracting and Indexing
-        </div>
-        <a href="https://vcgate.vnu.edu.vn/"><img
-                    src="/img/vcgate.png"></a>
-        <a href="https://scholar.google.com.vn/"><img src="/img/gscholar.png"></a>
-    </div>
-
     {* Sidebars *}
     {if empty($isFullWidth)}
         {capture assign="sidebarCode"}{call_hook name="Templates::Common::Sidebar"}{/capture}
