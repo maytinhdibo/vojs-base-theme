@@ -52,7 +52,7 @@
 			<ul class="list-group">
 				{foreach from=$submissionChecklist item=checklistItem}
 					<li class="list-group-item">
-						<span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+						<span class="fas fa-check" aria-hidden="true"></span>&nbsp;
 						<span class="item-content">{$checklistItem.content|nl2br}</span>
 					</li>
 				{/foreach}
