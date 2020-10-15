@@ -24,7 +24,6 @@
     {* Issue introduction area above articles *}
     <div class="heading  col-md-4">
         {assign var="issueDetailsCol" value="12"}
-
         {* Issue cover image and description*}
         {assign var=issueCover value=$issue->getLocalizedCoverImageUrl()}
         {if $issueCover}
