@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-02-18T19:18:25+00:00\n"
+"PO-Revision-Date: 2020-02-18T19:18:25+00:00\n"
+"Language: \n"
+
+msgid "plugins.themes.vojs.name"
+msgstr "Giao diện VOJS"
+
+msgid "plugins.themes.vojs.description"
+msgstr "Giao diện được phát triển bởi VOJS."
+
+msgid "plugins.themes.vojs.accessible_menu.label"
+msgstr "Chuyển nhanh đến nội dung trang"
+
+msgid "plugins.themes.vojs.accessible_menu.main_navigation"
+msgstr "Điều hướng chính"
+
+msgid "plugins.themes.vojs.accessible_menu.main_content"
+msgstr "Nội dung chính"
+
+msgid "plugins.themes.vojs.accessible_menu.sidebar"
+msgstr "Thanh bên"
+
+msgid "plugins.themes.vojs.article.sidebar"
+msgstr "Thanh bên bài viết"
+
+msgid "plugins.themes.vojs.article.main"
+msgstr "Nội dung chính của bài viết"
+
+msgid "plugins.themes.vojs.article.details"
+msgstr "Chi tiết bài viết"
+
+msgid "plugins.themes.vojs.options.bootstrapTheme.label"
+msgstr "Giao diện Bootstrap"
+
+msgid "plugins.themes.vojs.options.bootstrapTheme.description"
+msgstr "Chọn một trong những giao diện mã nguồn mở Bootstrap sẽ thay đổi màu sắc và kiểu chữ của trang web của bạn."
+
+msgid "plugins.themes.vojs.options.bootstrapTheme.bootstrap3"
+msgstr "Giao diện mặc định"
