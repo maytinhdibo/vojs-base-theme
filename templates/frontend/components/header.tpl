@@ -24,7 +24,6 @@
 {include file="frontend/components/headerHead.tpl"}
 <body class="pkp_page_{$requestedPage|escape|default:"index"} pkp_op_{$requestedOp|escape|default:"index"}{if $showingLogo} has_site_logo{/if}">
 <div class="pkp_structure_page">
-
     <nav id="accessibility-nav" class="sr-only" role="navigation"
          aria-label="{translate|escape key="plugins.themes.bootstrap3.accessible_menu.label"}">
         <ul>
@@ -44,6 +43,16 @@
             <div class="header-bar hidden-xs">
                 <div class="container">
                     {$displayPageHeaderTitle|upper}
+                    <div class="language_toggle">
+                        {foreach from=$languageToggleLocales item=localeName key=localeKey name=langLoop}
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
+                                {$localeKey|substr:0:2|upper}
+                            </a>
+                            {if not $smarty.foreach.langLoop.last}
+                                |
+                            {/if}
+                        {/foreach}
+                    </div>
                 </div>
             </div>
         </div>
