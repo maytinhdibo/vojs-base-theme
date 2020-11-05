@@ -25,7 +25,7 @@
     {call_hook name="Templates::Index::journal"}
 
     <header class="page-header">
-        <h2>{translate key="journal.introduction"}
+        <h2>{$currentJournal->getLocalizedName()}
         </h2>
     </header>
 

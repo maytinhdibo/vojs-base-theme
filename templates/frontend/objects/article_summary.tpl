@@ -29,7 +29,7 @@
     {*	{/if}*}
 
     <div class="media-body">
-        <div style="padding-left: 0;" class="col-md-10">
+        <div style="padding-left: 0;" class="col-md-12">
             <a href="{url page="article" op="view" path=$articlePath}">
                 {$article->getLocalizedTitle()|strip_unsafe_html}
                 {if $article->getLocalizedSubtitle()}
@@ -51,38 +51,41 @@
                     </div>
                 {/if}
 
+
+                {if !$hideGalleys && $article->getGalleys()}
+                    <div class="btn-group" role="group">
+                        {foreach from=$article->getGalleys() item=galley}
+                            {if $primaryGenreIds}
+                                {assign var="file" value=$galley->getFile()}
+                                {if !$galley->getRemoteUrl() && !($file && in_array($file->getGenreId(), $primaryGenreIds))}
+                                    {continue}
+                                {/if}
+                            {/if}
+                            {assign var=publication value=$article->getCurrentPublication()}
+                            {assign var="hasArticleAccess" value=$hasAccess}
+                            {if $currentContext->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_OPEN || $publication->getData('accessStatus') == $smarty.const.ARTICLE_ACCESS_OPEN}
+                                {assign var="hasArticleAccess" value=1}
+                            {/if}
+                            {include file="frontend/objects/galley_link.tpl" parent=$article hasAccess=$hasArticleAccess}
+                        {/foreach}
+                    </div>
+                {/if}
                 {* Page numbers for this article *}
                 {if $article->getPages()}
-                    <p class="pages">
+                    <a class="galley-link btn btn-borders btn-xs btn-outline pdf">
+                        {translate|escape key="vojs.page"}:
                         {$article->getPages()|escape}
-                    </p>
+                    </a>
                 {/if}
 
             {/if}
 
         </div>
 
-        <div style="padding-right: 0; text-align: end;" class="col-md-2">
+        {* <div style="padding-right: 0; text-align: end;" class="col-md-12">
 
-            {if !$hideGalleys && $article->getGalleys()}
-                <div class="btn-group" role="group">
-                    {foreach from=$article->getGalleys() item=galley}
-                        {if $primaryGenreIds}
-                            {assign var="file" value=$galley->getFile()}
-                            {if !$galley->getRemoteUrl() && !($file && in_array($file->getGenreId(), $primaryGenreIds))}
-                                {continue}
-                            {/if}
-                        {/if}
-                        {assign var=publication value=$article->getCurrentPublication()}
-                        {assign var="hasArticleAccess" value=$hasAccess}
-                        {if $currentContext->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_OPEN || $publication->getData('accessStatus') == $smarty.const.ARTICLE_ACCESS_OPEN}
-                            {assign var="hasArticleAccess" value=1}
-                        {/if}
-                        {include file="frontend/objects/galley_link.tpl" parent=$article hasAccess=$hasArticleAccess}
-                    {/foreach}
-                </div>
-            {/if}
-        </div>
+
+        </div> *}
 
     </div>
 
