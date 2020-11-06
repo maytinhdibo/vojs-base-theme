@@ -46,7 +46,7 @@
                     <div class="language_toggle">
                         {foreach from=$languageToggleLocales item=localeName key=localeKey name=langLoop}
                             <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
-                                {$localeKey|substr:0:2|upper}
+                                {$localeName}
                             </a>
                             {if not $smarty.foreach.langLoop.last}
                                 |
