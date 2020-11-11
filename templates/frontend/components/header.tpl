@@ -42,7 +42,7 @@
         <div id="header-bar" class="hidden-xs">
             <div class="header-bar hidden-xs">
                 <div class="container">
-                    <span class="top-additional-content">{$additionalHomeContent|upper}</span>
+                    <span class="top-additional-content">{$OrganizationName|upper}</span>
                     <div class="language_toggle">
                         {foreach from=$languageToggleLocales item=localeName key=localeKey name=langLoop}
                             <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
