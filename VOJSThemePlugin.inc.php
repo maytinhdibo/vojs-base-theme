@@ -179,7 +179,7 @@ class VOJSThemePlugin extends ThemePlugin
             $templateMgr->assign('languageToggleLocales', $locales);
         }
         
-        $templateMgr->assign('OrganizationName', $journal->getLocalizedData('additionalHomeContent'));
+        $templateMgr->assign('organizationName', $journal->getLocalizedData('additionalHomeContent'));
     }
 
     /**
