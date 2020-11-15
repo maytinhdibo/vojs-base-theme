@@ -80,12 +80,12 @@
                 {* Views *}
                 <div class="list-group-item views">
                     <strong>{translate key="submission.abstractViews"}</strong>: {$article->getViews()}<br/>
-                    {* {if is_a($article, 'PublishedArticle')}{assign var=galleys value=$article->getGalleys()}{/if}
+                    {assign var=galleys value=$article->getGalleys()}
                     {if $galleys}
                         {foreach from=$galleys item=galley name=galleyList}
                             <strong>{$galley->getGalleyLabel()}</strong>: {$galley->getViews()}
                         {/foreach}
-                    {/if} *}
+                    {/if}
                 </div>
 
                 {* DOI (requires plugin) *}
