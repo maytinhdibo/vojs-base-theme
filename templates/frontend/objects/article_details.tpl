@@ -79,11 +79,11 @@
 
                 {* Views *}
                 <div class="list-group-item views">
-                    <strong>{translate key="submission.abstractViews"}</strong>: {$article->getViews()}<br/>
+                    <strong>{translate key="article.abstractViewsNumber"}</strong>: {$article->getViews()}<br/>
                     {assign var=galleys value=$article->getGalleys()}
                     {if $galleys}
                         {foreach from=$galleys item=galley name=galleyList}
-                            <strong>{$galley->getGalleyLabel()}</strong>: {$galley->getViews()}
+                            <strong>{translate key="article.eachGalleyViewsNumber"} {$galley->getGalleyLabel()}</strong>: {$galley->getViews()}
                         {/foreach}
                     {/if}
                 </div>
