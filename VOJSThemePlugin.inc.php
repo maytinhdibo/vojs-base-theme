@@ -18,6 +18,96 @@ import('lib.pkp.classes.plugins.ThemePlugin');
 class VOJSThemePlugin extends ThemePlugin
 {
     /**
+     * @copydoc Plugin::register()
+     */
+    function register($category, $path, $mainContextId = null) {
+        $success = parent::register($category, $path, $mainContextId);
+        if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) return true;
+        if ($success && $this->getEnabled($mainContextId)) {
+            // Insert Google Analytics page tag to footer
+            HookRegistry::register('TemplateManager::display', array($this, 'registerScript'));
+        }
+        return $success;
+    }
+
+    function getActions($request, $verb) {
+        $router = $request->getRouter();
+        import('lib.pkp.classes.linkAction.request.AjaxModal');
+        return array_merge(
+            $this->getEnabled()?array(
+                new LinkAction(
+                    'settings',
+                    new AjaxModal(
+                        $router->url($request, null, null, 'manage', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'themes')),
+                        $this->getDisplayName()
+                    ),
+                    __('manager.plugins.settings'),
+                    null
+                ),
+            ):array(),
+            parent::getActions($request, $verb)
+        );
+    }
+
+    /**
+     * @copydoc Plugin::manage()
+     */
+    function manage($args, $request) {
+        switch ($request->getUserVar('verb')) {
+            case 'settings':
+                $context = $request->getContext();
+
+                AppLocale::requireComponents(LOCALE_COMPONENT_APP_COMMON,  LOCALE_COMPONENT_PKP_MANAGER);
+                $templateMgr = TemplateManager::getManager($request);
+                $templateMgr->registerPlugin('function', 'plugin_url', array($this, 'smartyPluginUrl'));
+
+                $this->import('VOJSSettingsForm');
+                $form = new VOJSSettingsForm($this, $context->getId());
+
+                if ($request->getUserVar('save')) {
+                    $form->readInputData();
+                    if ($form->validate()) {
+                        $form->execute();
+                        return new JSONMessage(true);
+                    }
+                } else {
+                    $form->initData();
+                }
+                return new JSONMessage(true, $form->fetch($request));
+        }
+        return parent::manage($args, $request);
+    }
+
+    /**
+     * Register the Google Analytics script tag
+     * @param $hookName string
+     * @param $params array
+     */
+    function registerScript($hookName, $params) {
+        $request = Application::get()->getRequest();
+        $context = $request->getContext();
+        if (!$context) return false;
+        $router = $request->getRouter();
+        if (!is_a($router, 'PKPPageRouter')) return false;
+
+        $googleAnalyticsSiteId = $this->getSetting($context->getId(), 'googleAnalyticsSiteId');
+        if (empty($googleAnalyticsSiteId)) return false;
+
+        // Insert Google Analytics code here
+        $googleAnalyticsCode = "<script>console.log($googleAnalyticsSiteId)</script>";
+
+        $templateMgr = TemplateManager::getManager($request);
+        $templateMgr->addHeader(
+            'googleanalytics',
+            $googleAnalyticsCode,
+            array(
+                'priority' => STYLE_SEQUENCE_LAST,
+            )
+        );
+        return false;
+    }
+
+    /**
      * Initialize the theme
      *
      * @return null
