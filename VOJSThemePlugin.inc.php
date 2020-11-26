@@ -178,6 +178,8 @@ class VOJSThemePlugin extends ThemePlugin
             $templateMgr->assign('enableLanguageToggle', true);
             $templateMgr->assign('languageToggleLocales', $locales);
         }
+        
+        $templateMgr->assign('organizationName', $journal->getLocalizedData('additionalHomeContent'));
     }
 
     /**

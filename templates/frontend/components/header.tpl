@@ -42,8 +42,7 @@
         <div id="header-bar" class="hidden-xs">
             <div class="header-bar hidden-xs">
                 <div class="container">
-                    {*<span class="top-additional-content">{$additionalHomeContent|upper}</span>*}
-                    <span class="top-additional-content">Tổng hội Y học Việt Nam </span>
+                    <span class="top-additional-content">{$organizationName|upper}</span>
                     <div class="language_toggle">
                         {foreach from=$languageToggleLocales item=localeName key=localeKey name=langLoop}
                             <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
@@ -94,17 +93,27 @@
                     {* Primary navigation menu for current application *}
                     {$primaryMenu}
 
-
-                    {*                    <nav aria-label="{translate|escape key="common.navigation.user"}">*}
+                    {*<nav aria-label="{translate|escape key="common.navigation.user"}">*}
                     {load_menu name="user" id="navigationUser" ulClass="nav nav-pills tab-list pull-right"}
-                    {*                    </nav>*}
-
+                    {*</nav>*}
+                       
                     {* Search form *}
                     {if $currentContext}
                         <div class="pull-md-right">
                             {include file="frontend/components/searchForm_simple.tpl"}
                         </div>
                     {/if}
+
+                    {* Language list mobile*}
+                    <div class="nav navbar-nav visible-xs">
+                        {foreach from=$languageToggleLocales item=localeName key=localeKey name=langLoop}
+                            <li>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
+                                    {$localeName}
+                                </a>
+                            </li>
+                        {/foreach}
+                    </div> 
                 </div>
             </nav>
         {/if}
