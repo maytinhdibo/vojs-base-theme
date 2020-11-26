@@ -77,6 +77,17 @@
                     </div>
                 {/if}
 
+                {* Views *}
+                <div class="list-group-item views">
+                    <strong>{translate key="article.abstractViewsNumber"}</strong>: {$article->getViews()}<br/>
+                    {assign var=galleys value=$article->getGalleys()}
+                    {if $galleys}
+                        {foreach from=$galleys item=galley name=galleyList}
+                            <strong>{translate key="article.eachGalleyViewsNumber"} {$galley->getGalleyLabel()}</strong>: {$galley->getViews()}
+                        {/foreach}
+                    {/if}
+                </div>
+
                 {* DOI (requires plugin) *}
                 {foreach from=$pubIdPlugins item=pubIdPlugin}
                     {if $pubIdPlugin->getPubIdType() != 'doi'}
@@ -99,6 +110,8 @@
                     {/if}
                 {/foreach}
             </div>
+            
+            
 
             {* Issue article appears in *}
             <div class="panel panel-default issue">
