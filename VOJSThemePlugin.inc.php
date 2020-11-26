@@ -20,7 +20,8 @@ class VOJSThemePlugin extends ThemePlugin
     /**
      * @copydoc Plugin::register()
      */
-    function register($category, $path, $mainContextId = null) {
+    function register($category, $path, $mainContextId = null)
+    {
         $success = parent::register($category, $path, $mainContextId);
         if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) return true;
         if ($success && $this->getEnabled($mainContextId)) {
@@ -30,11 +31,12 @@ class VOJSThemePlugin extends ThemePlugin
         return $success;
     }
 
-    function getActions($request, $verb) {
+    function getActions($request, $verb)
+    {
         $router = $request->getRouter();
         import('lib.pkp.classes.linkAction.request.AjaxModal');
         return array_merge(
-            $this->getEnabled()?array(
+            $this->getEnabled() ? array(
                 new LinkAction(
                     'settings',
                     new AjaxModal(
@@ -44,7 +46,7 @@ class VOJSThemePlugin extends ThemePlugin
                     __('manager.plugins.settings'),
                     null
                 ),
-            ):array(),
+            ) : array(),
             parent::getActions($request, $verb)
         );
     }
@@ -52,12 +54,13 @@ class VOJSThemePlugin extends ThemePlugin
     /**
      * @copydoc Plugin::manage()
      */
-    function manage($args, $request) {
+    function manage($args, $request)
+    {
         switch ($request->getUserVar('verb')) {
             case 'settings':
                 $context = $request->getContext();
 
-                AppLocale::requireComponents(LOCALE_COMPONENT_APP_COMMON,  LOCALE_COMPONENT_PKP_MANAGER);
+                AppLocale::requireComponents(LOCALE_COMPONENT_APP_COMMON, LOCALE_COMPONENT_PKP_MANAGER);
                 $templateMgr = TemplateManager::getManager($request);
                 $templateMgr->registerPlugin('function', 'plugin_url', array($this, 'smartyPluginUrl'));
 
@@ -83,7 +86,8 @@ class VOJSThemePlugin extends ThemePlugin
      * @param $hookName string
      * @param $params array
      */
-    function registerScript($hookName, $params) {
+    function registerScript($hookName, $params)
+    {
         $request = Application::get()->getRequest();
         $context = $request->getContext();
         if (!$context) return false;
@@ -94,14 +98,21 @@ class VOJSThemePlugin extends ThemePlugin
         if (empty($googleAnalyticsSiteId)) return false;
 
         // Insert Google Analytics code here
-        $googleAnalyticsCode = "<script>console.log($googleAnalyticsSiteId)</script>";
+        $googleAnalyticsCode = "<script async src=\"https://www.googletagmanager.com/gtag/js?id=$googleAnalyticsSiteId\"></script>
+            <script>
+                    window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', '$googleAnalyticsSiteId');
+            </script>";
 
         $templateMgr = TemplateManager::getManager($request);
         $templateMgr->addHeader(
             'googleanalytics',
             $googleAnalyticsCode,
             array(
-                'priority' => STYLE_SEQUENCE_LAST,
+                'priority' => STYLE_SEQUENCE_CORE,
             )
         );
         return false;
@@ -268,7 +279,7 @@ class VOJSThemePlugin extends ThemePlugin
             $templateMgr->assign('enableLanguageToggle', true);
             $templateMgr->assign('languageToggleLocales', $locales);
         }
-        
+
         $templateMgr->assign('organizationName', $journal->getLocalizedData('additionalHomeContent'));
     }
 
