@@ -96,7 +96,7 @@
                     {*<nav aria-label="{translate|escape key="common.navigation.user"}">*}
                     {load_menu name="user" id="navigationUser" ulClass="nav nav-pills tab-list pull-right"}
                     {*</nav>*}
-                       
+
                     {* Search form *}
                     {if $currentContext}
                         <div class="pull-md-right">
@@ -113,15 +113,19 @@
                                 </a>
                             </li>
                         {/foreach}
-                    </div> 
+                    </div>
                 </div>
             </nav>
         {/if}
 
-        <a class="logo-mobile visible-xs" href="{url router=$smarty.const.ROUTE_PAGE page="index"}">
-            <img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}"
-                 {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{/if}>
-        </a>
+        {assign var="thumb" value=$journal->getLocalizedData('journalThumbnail')}
+
+        {if $thumb}
+            <a class="logo-mobile visible-xs" href="{url router=$smarty.const.ROUTE_PAGE page="index"}">
+                <img src="{$publicFilesDir}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText}
+                alt="{$thumb.altText|escape|default:''}"{/if} />
+            </a>
+        {/if}
 
 </div><!-- .pkp_head_wrapper -->
 </header><!-- .pkp_structure_head -->

@@ -159,6 +159,7 @@ class VOJSThemePlugin extends ThemePlugin
 
         $templateMgr = $args[0];
 
+        $templateMgr->assign('journal', $journal);
         $templateMgr->assign('isPostRequest', $request->isPost());
         if (!defined('SESSION_DISABLE_INIT')) {
             $journal = $request->getJournal();
