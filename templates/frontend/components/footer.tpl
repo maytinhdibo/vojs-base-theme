@@ -13,7 +13,7 @@
  *}
 
 </div><!-- pkp_structure_content -->
-c
+
 <footer class="footer">
 
     <div class="container">
@@ -26,15 +26,14 @@ c
                 {/if}
             </div>
 
-            <div style="text-align: center" class="col-md-2">
-                <a href="https://vojs.vn/">
-                    <div class="credit">
-                        <img src="{$baseUrl}/templates/images/vojs_credit.png">
-                    </div>
-                </a>
-            </div>
-
         </div> <!-- .row -->
+
+        <div class="credit">
+            <img src="{$baseUrl}/templates/images/favicon.png">
+            {translate key="plugins.themes.vojs.developedBy"}
+            <a href="https://vojs.vn/">vojs.vn</a>
+        </div>
+
     </div><!-- .container -->
 </footer>
 </div><!-- pkp_structure_page -->

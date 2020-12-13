@@ -46,3 +46,6 @@ msgstr "Chọn một trong những giao diện mã nguồn mở Bootstrap sẽ t
 
 msgid "plugins.themes.vojs.options.bootstrapTheme.bootstrap3"
 msgstr "Giao diện mặc định"
+
+msgid "plugins.themes.vojs.developedBy"
+msgstr "Xây dựng website"
