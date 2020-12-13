@@ -13,7 +13,7 @@
  *}
 
 </div><!-- pkp_structure_content -->
-
+c
 <footer class="footer">
 
     <div class="container">
