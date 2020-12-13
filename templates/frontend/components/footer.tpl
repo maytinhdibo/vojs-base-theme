@@ -19,12 +19,20 @@
     <div class="container">
 
         <div class="row">
-            {if $pageFooter}
-                <div class="col-md-7">
-                    {$pageFooter}
-                </div>
-            {/if}
 
+            <div class="col-md-10">
+                {if $pageFooter}
+                    {$pageFooter}
+                {/if}
+            </div>
+
+            <div style="text-align: center" class="col-md-2">
+                <a href="https://vojs.vn/">
+                    <div class="credit">
+                        <img src="{$baseUrl}/templates/images/vojs_credit.png">
+                    </div>
+                </a>
+            </div>
 
         </div> <!-- .row -->
     </div><!-- .container -->
