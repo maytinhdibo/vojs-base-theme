@@ -29,9 +29,9 @@
         </h2>
     </header>
 
-    {if $journalDescription}
+    {if $currentJournal->getLocalizedData('about')}
         <div class="journal-description">
-            {$journalDescription}
+            {$currentJournal->getLocalizedData('about')}
         </div>
     {/if}
 
@@ -85,12 +85,12 @@
 <div class="sidebar col-md-3">
     {*    side bar start*}
 
-{*    {if $homepageImage}*}
-{*        <div class="homepage-image thumb-journal hidden-xs hidden-sm">*}
-{*            <img class="img-responsive" src="{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}"*}
-{*                 alt="{$homepageImageAltText|escape}">*}
-{*        </div>*}
-{*    {/if}*}
+    {*    {if $homepageImage}*}
+    {*        <div class="homepage-image thumb-journal hidden-xs hidden-sm">*}
+    {*            <img class="img-responsive" src="{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}"*}
+    {*                 alt="{$homepageImageAltText|escape}">*}
+    {*        </div>*}
+    {*    {/if}*}
 
     {* Sidebars *}
     {if empty($isFullWidth)}
