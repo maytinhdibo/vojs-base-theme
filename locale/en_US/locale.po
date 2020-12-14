@@ -46,3 +46,6 @@ msgstr "Select one of these open-source Bootstrap themes which change the colors
 
 msgid "plugins.themes.vojs.options.bootstrapTheme.bootstrap3"
 msgstr "Default Theme"
+
+msgid "plugins.themes.vojs.developedBy"
+msgstr "Developed by"

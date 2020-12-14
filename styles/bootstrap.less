@@ -18,7 +18,8 @@
 .navbar-header .site-name {
   margin: 0;
 }
-.header-bar > .container{
+
+.header-bar > .container {
   font-size: 15px;
 }
 
@@ -390,6 +391,7 @@ h2, h1 {
 
 .top-additional-content {
   padding-left: 15px;
+
   p {
     display: inline;
   }
@@ -472,6 +474,32 @@ h2, h1 {
   border-radius: @big-radius;
   border: 1px solid #ccc;
   padding: 30px;
+}
+
+.footer {
+  position: relative;
+
+  .credit {
+    padding: 2em 1em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    zoom: 0.75;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 9px 15px 9px  9px;
+    border-radius: 9px 0 0 0;
+    transition: 0.5s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 12px rgba(125, 104, 158, 0.5);
+    }
+
+  img{
+    width: 22.5px;
+    margin-right: 3px;
+  }
+  }
 }
 
 header#headerNavigationContainer {
