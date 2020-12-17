@@ -305,16 +305,6 @@
 
                 {call_hook name="Templates::Article::Details"}
 
-                {* References *}
-                {if $article->getCitations()}
-                    <div class="article-references">
-                        <h2>{translate key="submission.citations"}</h2>
-                        <div class="article-references-content">
-                            {$article->getCitations()|nl2br}
-                        </div>
-                    </div>
-                {/if}
-
                 {* Keywords *}
                 {if !empty($publication->getLocalizedData('keywords'))}
                     <div class="article-keywords">
@@ -324,6 +314,16 @@
                                 {$keyword|escape}{if !$smarty.foreach.keywords.last}{translate key="common.commaListSeparator"}{/if}
                             {/foreach}
                         </p>
+                    </div>
+                {/if}
+
+                {* References *}
+                {if $article->getCitations()}
+                    <div class="article-references">
+                        <h2>{translate key="submission.citations"}</h2>
+                        <div class="article-references-content">
+                            {$article->getCitations()|nl2br}
+                        </div>
                     </div>
                 {/if}
 
