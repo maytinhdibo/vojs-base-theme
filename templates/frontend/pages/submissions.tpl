@@ -16,12 +16,6 @@
 
     {include file="frontend/components/breadcrumbs.tpl" currentTitleKey="about.onlineSubmissions.newSubmission"}
 
-    {* Page Title *}
-    <div class="page-header">
-        <h1>{translate key="about.onlineSubmissions.newSubmission"}</h1>
-    </div>
-    {* /Page Title *}
-
     {* Login/register prompt *}
     {if $isUserLoggedIn}
         {capture assign="newSubmission"}<a
