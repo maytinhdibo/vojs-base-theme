@@ -14,11 +14,11 @@
 
 <div id="main-content" class="page page_submissions">
 
-    {include file="frontend/components/breadcrumbs.tpl" currentTitleKey="about.newSubmission"}
+    {include file="frontend/components/breadcrumbs.tpl" currentTitleKey="about.onlineSubmissions.newSubmission"}
 
     {* Page Title *}
     <div class="page-header">
-        <h1>{translate key="about.newSubmission"}</h1>
+        <h1>{translate key="about.onlineSubmissions.newSubmission"}</h1>
     </div>
     {* /Page Title *}
 
