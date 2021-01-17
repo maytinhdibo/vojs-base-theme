@@ -83,7 +83,7 @@
                     {assign var=galleys value=$article->getGalleys()}
                     {if $galleys}
                         {foreach from=$galleys item=galley name=galleyList}
-                            <strong>{translate key="article.eachGalleyViewsNumber"} {$galley->getGalleyLabel()}</strong>: {$galley->getViews()}
+                            <strong>{translate key="article.eachGalleyViewsNumber"} {$galley->getGalleyLabel()}</strong>: {$galley->getViews()}<br/>
                         {/foreach}
                     {/if}
                 </div>
