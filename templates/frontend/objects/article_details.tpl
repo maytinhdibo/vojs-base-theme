@@ -73,7 +73,7 @@
                     <div class="list-group-item date-published">
                         {capture assign=translatedDatePublished}{translate key="submissions.published"}{/capture}
                         <strong>{translate key="semicolon" label=$translatedDatePublished}</strong>
-                        {$article->getDatePublished()|date_format}
+                        {$article->getDatePublished()|date_format:$dateFormatShort}
                     </div>
                 {/if}
 
