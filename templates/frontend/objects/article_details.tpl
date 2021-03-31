@@ -35,7 +35,7 @@
         <section class="article-sidebar col-md-4">
 
             {* Screen-reader heading for easier navigation jumps *}
-            <h2 class="sr-only">{translate key="plugins.themes.bootstrap3.article.sidebar"}</h2>
+            <h2 class="sr-only">{translate key="plugins.themes.vojs.article.sidebar"}</h2>
 
             {*			 Article/Issue cover image *}
             {*			{if $article->getLocalizedCoverImage() || $issue->getLocalizedCoverImage()}*}
@@ -208,7 +208,7 @@
             <section class="article-main">
 
                 {* Screen-reader heading for easier navigation jumps *}
-                <h2 class="sr-only">{translate key="plugins.themes.bootstrap3.article.main"}</h2>
+                <h2 class="sr-only">{translate key="plugins.themes.vojs.article.main"}</h2>
 
                 {* Article abstract *}
                 {if $article->getLocalizedAbstract()}
@@ -227,7 +227,7 @@
             <section class="article-more-details">
 
                 {* Screen-reader heading for easier navigation jumps *}
-                <h2 class="sr-only">{translate key="plugins.themes.bootstrap3.article.details"}</h2>
+                <h2 class="sr-only">{translate key="plugins.themes.vojs.article.details"}</h2>
 
                 {* Article Subject *}
                 {if $article->getLocalizedSubject()}
