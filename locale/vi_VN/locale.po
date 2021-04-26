@@ -49,3 +49,6 @@ msgstr "Giao diện mặc định"
 
 msgid "plugins.themes.vojs.developedBy"
 msgstr "Xây dựng website"
+
+msgid "vojs.page"
+msgstr "Trang"

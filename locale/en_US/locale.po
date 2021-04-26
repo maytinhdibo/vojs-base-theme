@@ -49,3 +49,6 @@ msgstr "Default Theme"
 
 msgid "plugins.themes.vojs.developedBy"
 msgstr "Developed by"
+
+msgid "vojs.page"
+msgstr "Page"
