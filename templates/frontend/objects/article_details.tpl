@@ -26,7 +26,7 @@
             {/if}
         </h2>
         <div id="authorString">
-            <i style="color:#777" fis>   {$article->getAuthorString()}</i>
+            <i style="color:#777">{{$article->getAuthorStringWithAffiliation()}}</i>
         </div>
     </header>
 
@@ -288,7 +288,7 @@
                                                 {if $author->getLocalizedAffiliation()}
                                                     {capture assign="authorName"}{$author->getFullName()|escape}{/capture}
                                                     {capture assign="authorAffiliation"}<span
-                                                            class="affiliation">{$author->getLocalizedAffiliation()|escape}</span>{/capture}
+                                                            class="affiliation">{implode(", ",$author->getLocalizedAffiliation())|escape}</span>{/capture}
                                                     {translate key="submission.authorWithAffiliation" name=$authorName affiliation=$authorAffiliation}
                                                 {else}
                                                     {$author->getFullName()|escape}
