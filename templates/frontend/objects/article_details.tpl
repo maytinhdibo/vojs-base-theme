@@ -16,19 +16,6 @@
  * @uses $pubIdPlugins @todo
  *}
 <div class="article-details">
-    <header style="margin-bottom: 1em">
-        <h2>
-            {$article->getLocalizedTitle()|escape}
-            {if $article->getLocalizedSubtitle()}
-                <small class="sub-title">
-                    {$article->getLocalizedSubtitle()|escape}
-                </small>
-            {/if}
-        </h2>
-        <div id="authorString">
-            <i style="color:#777">{{$article->getAuthorStringWithAffiliation()}}</i>
-        </div>
-    </header>
 
     <div class="row">
 
@@ -205,6 +192,19 @@
         </section><!-- .article-sidebar -->
 
         <div class="col-md-8 article-details">
+            <header style="margin-bottom: 1em">
+                <h2>
+                    {$article->getLocalizedTitle()|escape}
+                    {if $article->getLocalizedSubtitle()}
+                        <small class="sub-title">
+                            {$article->getLocalizedSubtitle()|escape}
+                        </small>
+                    {/if}
+                </h2>
+                <div id="authorString">
+                    <i style="color:#777">{{$article->getAuthorStringWithAffiliation()}}</i>
+                </div>
+            </header>
             <section class="article-main">
 
                 {* Screen-reader heading for easier navigation jumps *}

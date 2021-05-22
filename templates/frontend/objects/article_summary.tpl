@@ -72,7 +72,7 @@
                 {/if}
                 {* Page numbers for this article *}
                 {if $article->getPages()}
-                    <a class="galley-link btn btn-borders btn-xs btn-outline pdf">
+                    <a class="btn btn-borders btn-xs btn-outline" style="float:right; pointer-events:none">
                         {translate|escape key="vojs.page"}:
                         {$article->getPages()|escape}
                     </a>
