@@ -44,7 +44,7 @@
                 {if $showAuthor}
                     <div class="meta">
                         {if $showAuthor}
-                            <div class="authors">
+                            <div class="authors" {if !$hideDOI && $pubIdPlugins}style="padding-bottom: 0;"{/if}>
                                 {$article->getAuthorString()|escape}
                             </div>
                         {/if}
