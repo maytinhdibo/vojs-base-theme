@@ -63,7 +63,7 @@
                         {/if}
                         {if $pubId}
                             {assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-                            <div class="doi">
+                            <div class="doi" style="padding-bottom: 3px;">
                                 <a href="{$doiUrl}">
                                     {$doiUrl}
                                 </a>
