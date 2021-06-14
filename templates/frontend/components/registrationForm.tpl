@@ -49,6 +49,17 @@
                            value="{$affiliation|escape}" required>
                 </label>
             </div>
+            {if $phoneInRegistrationForm}
+                <div class="form-group phone">
+                    <label>
+                        {translate key="user.phone"}
+                        <span class="form-control-required">*</span>
+                        <span class="sr-only">{translate key="common.required"}</span>
+                        <input class="form-control" type="text" name="phone" id="phone"
+                               value="{$phone|escape}" required>
+                    </label>
+                </div>
+            {/if}
             <div class="form-group country">
                 <label>
                     {translate key="common.country"}
