@@ -39,23 +39,25 @@
 
     {* Header *}
     <header class="navbar navbar-default" id="headerNavigationContainer" role="banner">
-        <div id="header-bar" class="hidden-xs">
-            <div class="header-bar hidden-xs">
-                <div class="container">
-                    <span class="top-additional-content">{$organizationName|upper}</span>
-                    <div class="language_toggle">
-                        {foreach from=$languageToggleLocales item=localeName key=localeKey name=langLoop}
-                            <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
-                                {$localeName}
-                            </a>
-                            {if not $smarty.foreach.langLoop.last}
-                                |
-                            {/if}
-                        {/foreach}
+        {if !$noTopBar}
+            <div id="header-bar" class="hidden-xs">
+                <div class="header-bar hidden-xs">
+                    <div class="container">
+                        <span class="top-additional-content">{$organizationName|upper}</span>
+                        <div class="language_toggle">
+                            {foreach from=$languageToggleLocales item=localeName key=localeKey name=langLoop}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
+                                    {$localeName}
+                                </a>
+                                {if not $smarty.foreach.langLoop.last}
+                                    |
+                                {/if}
+                            {/foreach}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {/if}
 
         <div class="logo hidden-xs">
             <div class="container">

@@ -181,6 +181,9 @@ class VOJSThemePlugin extends ThemePlugin
         }
 
         $templateMgr->assign('organizationName', $journal->getLocalizedData('additionalHomeContent'));
+        include "autoload.php";
+        $templateMgr->assign('noTopBar',envVojs('NO_TOP_BAR'));
+        $templateMgr->assign('enableVojsLangBlock',envVojs('VOJS_LANG_BLOCK'));
     }
 
     /**

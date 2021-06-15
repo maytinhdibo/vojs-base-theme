@@ -91,6 +91,22 @@
     {*                 alt="{$homepageImageAltText|escape}">*}
     {*        </div>*}
     {*    {/if}*}
+    {if $enableVojsLangBlock}
+        <div class="pkp_block block_language">
+            <h2 class="title">
+                {translate key="common.language"}
+            </h2>
+
+            <div class="content">
+                {foreach from=$languageToggleLocales item=localeName key=localeKey name=local}
+                    <span class="locale_{$localeKey|escape}{if $localeKey == $currentLocale} current{/if}" lang="{$localeKey|replace:"_":"-"}">
+                        <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">{$localeName}</a>
+                    </span>
+                    {if !$smarty.foreach.local.last}|{/if}
+                {/foreach}
+            </div>
+        </div><!-- .block_language -->
+    {/if}
 
     {* Sidebars *}
     {if empty($isFullWidth)}
