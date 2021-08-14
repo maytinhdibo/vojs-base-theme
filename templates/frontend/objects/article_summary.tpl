@@ -29,7 +29,7 @@
     {*	{/if}*}
 
     <div class="media-body">
-        <div style="padding-left: 0;" class="col-md-10">
+        <div style="padding-left: 0;" class="col-md-12">
             <a href="{url page="article" op="view" path=$articlePath}">
                 {$article->getLocalizedTitle()|strip_unsafe_html}
                 {if $article->getLocalizedSubtitle()}
@@ -44,25 +44,34 @@
                 {if $showAuthor}
                     <div class="meta">
                         {if $showAuthor}
-                            <div class="authors">
+                            <div class="authors" {if !$hideDOI && $pubIdPlugins}style="padding-bottom: 0;"{/if}>
                                 {$article->getAuthorString()|escape}
                             </div>
                         {/if}
                     </div>
                 {/if}
 
-                {* Page numbers for this article *}
-                {if $article->getPages()}
-                    <p class="pages">
-                        {$article->getPages()|escape}
-                    </p>
+            {if !$hideDOI && $pubIdPlugins}
+                    {foreach from=$pubIdPlugins item=pubIdPlugin}
+                        {if $pubIdPlugin->getPubIdType() != 'doi'}
+                            {continue}
+                        {/if}
+                        {if $issue->getPublished()}
+                            {assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
+                        {else}
+                            {assign var=pubId value=$pubIdPlugin->getPubId($article)} Preview pubId
+                        {/if}
+                        {if $pubId}
+                            {assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+                            <div class="doi" style="padding-bottom: 3px;">
+                                <a href="{$doiUrl}">
+                                    {$doiUrl}
+                                </a>
+                            </div>
+                        {/if}
+                    {/foreach}
                 {/if}
 
-            {/if}
-
-        </div>
-
-        <div style="padding-right: 0; text-align: end;" class="col-md-2">
 
             {if !$hideGalleys && $article->getGalleys()}
                 <div class="btn-group" role="group">
@@ -82,7 +91,22 @@
                     {/foreach}
                 </div>
             {/if}
+                {* Page numbers for this article *}
+                {if $article->getPages()}
+                    <a class="galley-link btn btn-borders btn-xs btn-outline pdf">
+                        {translate|escape key="vojs.page"}: 
+                        {$article->getPages()|escape}
+                    </a>
+                {/if}
+
+            {/if}
+
         </div>
+
+        {* <div style="padding-right: 0; text-align: end;" class="col-md-12">
+
+            
+        </div> *}
 
     </div>
 

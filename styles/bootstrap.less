@@ -297,7 +297,7 @@ h6.media-heading {
 
 // Style the footer
 footer.footer {
-  background: @header-image-color;
+  background: @footer-background;
   padding: 4em 0;
   margin-top: 4em;
 }
@@ -308,6 +308,10 @@ h2, h1 {
   line-height: 42px;
   margin: 0;
   color: @title-color;
+}
+
+p{
+  text-align: justify;
 }
 
 #authorString {
@@ -360,6 +364,13 @@ h2, h1 {
     h2 {
       margin-top: 0;
     }
+  }
+}
+
+.language_toggle{
+  float: right;
+  a{
+    color: @header-color;
   }
 }
 
@@ -442,6 +453,32 @@ h2, h1 {
   padding: 30px;
 }
 
+.footer {
+  position: relative;
+
+  .credit {
+    padding: 2em 1em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    zoom: 0.75;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 9px 15px 9px  9px;
+    border-radius: 9px 0 0 0;
+    transition: 0.5s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 12px rgba(125, 104, 158, 0.5);
+    }
+
+  img{
+    width: 22.5px;
+    margin-right: 3px;
+  }
+  }
+}
+
 header#headerNavigationContainer {
   border: none !important;
   border-radius: 0;
@@ -450,7 +487,7 @@ header#headerNavigationContainer {
   .header-bar {
     background: @top-header-bar;
     color: @header-color;
-    font-size: 0.8em;
+    font-size: 0.9em;
     padding-top: 6px;
     padding-bottom: 6px;
   }
@@ -464,7 +501,8 @@ header#headerNavigationContainer {
     background: @header-image-color;
 
     img {
-      height: 175px;
+      // height: 175px;
+      width: 100%;
     }
   }
 
@@ -516,6 +554,18 @@ header#headerNavigationContainer {
   }
 }
 
+.issues.media-list{
+  .issue-summary{
+    margin:0;
+    .media-body{
+      font-weight: 400;
+      display: block;
+      padding-left:1em;
+      font-size: 1.4em;
+    }
+  }
+}
+
 @media (max-width: 767px) {
   header#headerNavigationContainer {
     #nav-menu {
@@ -540,4 +590,22 @@ header#headerNavigationContainer {
   .navbar-default .navbar-collapse, .navbar-default .navbar-form, .header_view .navbar-collapse, .header_view .navbar-form {
     border-color: transparent;
   }
+}
+
+.page_announcement{
+  img{
+    max-width: 100%;
+  }
+}
+
+.cmp_breadcrumbs_announcement{
+  display: none;
+}
+
+.announcement-summary{
+   h2{
+    line-height: 1;
+    margin-bottom: 0.5em;
+    font-size: 1.8em;
+   }
 }

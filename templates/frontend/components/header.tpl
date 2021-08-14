@@ -21,6 +21,7 @@
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
 {if !$pageTitleTranslated}{capture assign="pageTitleTranslated"}{translate key=$pageTitle}{/capture}{/if}
+<meta property="og:image" content="{$baseUrl}/public/journals/1/homepageImage_vi_VN.png" />
 {include file="frontend/components/headerHead.tpl"}
 <body class="pkp_page_{$requestedPage|escape|default:"index"} pkp_op_{$requestedOp|escape|default:"index"}{if $showingLogo} has_site_logo{/if}">
 <div class="pkp_structure_page">
@@ -43,14 +44,26 @@
         <div id="header-bar" class="hidden-xs">
             <div class="header-bar hidden-xs">
                 <div class="container">
-                    {$displayPageHeaderTitle|upper}
+                    {* {$displayPageHeaderTitle|upper} *}
+                    {translate|escape key="vojs.organization"}
+                    {* <div class="language_toggle">
+                        {foreach from=$languageToggleLocales item=localeName key=localeKey name=langLoop}
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
+                                {$localeKey|substr:0:2|upper}
+                            </a>
+                            {if not $smarty.foreach.langLoop.last}
+                                |
+                            {/if}
+                        {/foreach}
+                    </div> *}
                 </div>
             </div>
         </div>
 
         <div class="logo hidden-xs">
             <div class="container">
-                <a href="{url router=$smarty.const.ROUTE_PAGE page="index"}">
+                <a href="http://phauthuattim.org.vn/">
+                {* <a href="{url router=$smarty.const.ROUTE_PAGE page="index"}"> *}
                     <img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}"
                          {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{/if}>
                 </a>
@@ -93,16 +106,39 @@
                     {if $currentContext}
                         <div class="pull-md-right">
                             {include file="frontend/components/searchForm_simple.tpl"}
+                            &nbsp;
+                             <div class="nav navbar-nav language_toggle">
+                                {foreach from=$languageToggleLocales item=localeName key=localeKey name=langLoop}
+                                 <li>
+                                    <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
+                                        {if $localeKey eq 'vi_VN'}
+                                            VIE
+                                        {else}
+                                           {$localeKey|substr:0:2|upper}
+                                        {/if}
+                                    </a>
+                                </li>
+                                    {* {if not $smarty.foreach.langLoop.last}
+                                       <li> <a> | </a> <li>
+                                    {/if} *}
+                                {/foreach}
+                    </div>
                         </div>
                     {/if}
+
+                   
                 </div>
             </nav>
         {/if}
 
-        <a class="logo-mobile visible-xs" href="{url router=$smarty.const.ROUTE_PAGE page="index"}">
-            <img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}"
-                 {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{/if}>
-        </a>
+        {assign var="thumb" value=$journal->getLocalizedData('journalThumbnail')}
+
+        {if $thumb}
+            <a class="logo-mobile visible-xs" href="{url router=$smarty.const.ROUTE_PAGE page="index"}">
+                <img src="{$publicFilesDir}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText}
+                alt="{$thumb.altText|escape|default:''}"{/if} />
+            </a>
+        {/if}
 
 </div><!-- .pkp_head_wrapper -->
 </header><!-- .pkp_structure_head -->

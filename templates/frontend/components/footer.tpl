@@ -19,14 +19,21 @@
     <div class="container">
 
         <div class="row">
-            {if $pageFooter}
-                <div class="col-md-7">
-                    {$pageFooter}
-                </div>
-            {/if}
 
+            <div class="col-md-10">
+                {if $pageFooter}
+                    {$pageFooter}
+                {/if}
+            </div>
 
         </div> <!-- .row -->
+
+         <div class="credit">
+            <img src="{$baseUrl}/templates/images/favicon.png">
+            {translate key="plugins.themes.vojs.developedBy"}
+            <a href="https://vojs.vn/">vojs.vn</a>
+        </div>
+        
     </div><!-- .container -->
 </footer>
 </div><!-- pkp_structure_page -->
@@ -36,3 +43,4 @@
 {call_hook name="Templates::Common::Footer::PageFooter"}
 </body>
 </html>
+

@@ -1,14 +1,14 @@
-@import (css) url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,400&display=swap');
+@import (css) url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 
 @font-family-base: "Roboto", "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
 
 @primary-color: #2874A6;
 
 @top-header-bar: #2874A6;
-@header-image-color: #cceaff;
+@header-image-color: #2874A6;
 @header-color: #fff;
 @nav-background: @primary-color;
-@footer-background: #fff;
+@footer-background: #cceaff;
 
 //Text
 @font-size-base: 15px;
@@ -32,3 +32,25 @@
 @brand-info: #3498DB;
 @brand-warning: #F39C12;
 @brand-danger: #E74C3C;
+
+#nav-menu .navbar-form{
+    padding: 0;
+}
+
+
+#main-navigation li a{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+@media (max-width: 767px) {
+    #nav-menu{
+        .language_toggle{
+            float: none;
+            margin-top: 0;
+        }
+        form[role="search"]{
+            margin: auto;
+        }
+    }    
+}

@@ -11,13 +11,15 @@
  * @uses $announcement Announcement The announcement to display
  *}
 
+{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="announcement.announcements"}
+
 <article class="announcement-full">
 	<header class="page-header">
 		<h1>
 			{$announcement->getLocalizedTitle()|escape}
 		</h1>
 		<small class="date">
-			<span class="glyphicon glyphicon-calendar"></span>
+			<span class="fas fa-calendar-day"></span>
 			{translate key="announcement.postedOn" postDate=$announcement->getDatePosted()|escape}
 		</small>
 	</header>

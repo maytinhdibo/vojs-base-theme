@@ -24,23 +24,12 @@
 
     {call_hook name="Templates::Index::journal"}
 
-    <header class="page-header">
-        <h2>{translate key="journal.introduction"}
-        </h2>
-    </header>
-
-    {if $journalDescription}
-        <div class="journal-description">
-            {$journalDescription}
-        </div>
-    {/if}
-
-    {* Announcements *}
+        {* Announcements *}
     {if $numAnnouncementsHomepage && $announcements|count}
-        <section class="cmp_announcements media">
+        <section style="margin-bottom: 0;" class="cmp_announcements media">
             <header class="page-header">
                 <h2>
-                    {translate key="announcement.announcements"}
+                    {translate key="announcement.announcementsHome"}
                 </h2>
             </header>
             <div class="media-list">
@@ -48,12 +37,22 @@
                     {if $smarty.foreach.announcements.iteration > $numAnnouncementsHomepage}
                         {break}
                     {/if}
-                    {include file="frontend/objects/announcement_summary.tpl" heading="h3"}
+                    {include file="frontend/objects/announcement_summary.tpl"}
                 {/foreach}
             </div>
         </section>
     {/if}
 
+    <header class="page-header">
+        <h2>{$currentJournal->getLocalizedName()}
+        </h2>
+    </header>
+
+    {if $currentJournal->getLocalizedData('about')}
+        <div class="journal-description">
+            {$currentJournal->getLocalizedData('about')}
+        </div>
+    {/if}
 
     {* Latest issue *}
     {if $issue}

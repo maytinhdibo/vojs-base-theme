@@ -16,19 +16,6 @@
  * @uses $pubIdPlugins @todo
  *}
 <div class="article-details">
-    <header style="margin-bottom: 1em">
-        <h2>
-            {$article->getLocalizedTitle()|escape}
-            {if $article->getLocalizedSubtitle()}
-                <small class="sub-title">
-                    {$article->getLocalizedSubtitle()|escape}
-                </small>
-            {/if}
-        </h2>
-        <div id="authorString">
-            <i style="color:#777" fis>   {$article->getAuthorString()}</i>
-        </div>
-    </header>
 
     <div class="row">
 
@@ -73,9 +60,20 @@
                     <div class="list-group-item date-published">
                         {capture assign=translatedDatePublished}{translate key="submissions.published"}{/capture}
                         <strong>{translate key="semicolon" label=$translatedDatePublished}</strong>
-                        {$article->getDatePublished()|date_format}
+                        {$article->getDatePublished()|date_format:$dateFormatShort}
                     </div>
                 {/if}
+
+                {* Views *}
+                <div class="list-group-item views">
+                    <strong>{translate key="article.abstractViewsNumber"}</strong>: {$article->getViews()}<br/>
+                    {assign var=galleys value=$article->getGalleys()}
+                    {if $galleys}
+                        {foreach from=$galleys item=galley name=galleyList}
+                            <strong>{translate key="article.eachGalleyViewsNumber"} {$galley->getGalleyLabel()}</strong>: {$galley->getViews()}
+                        {/foreach}
+                    {/if}
+                </div>
 
                 {* DOI (requires plugin) *}
                 {foreach from=$pubIdPlugins item=pubIdPlugin}
@@ -192,6 +190,19 @@
         </section><!-- .article-sidebar -->
 
         <div class="col-md-8 article-details">
+            <header style="margin-bottom: 1em">
+                <h2>
+                    {$article->getLocalizedTitle()|escape}
+                    {if $article->getLocalizedSubtitle()}
+                        <small class="sub-title">
+                            {$article->getLocalizedSubtitle()|escape}
+                        </small>
+                    {/if}
+                </h2>
+                <div id="authorString">
+                    <i style="color:#777">{{$article->getAuthorStringWithAffiliation()}}</i>
+                </div>
+            </header>
             <section class="article-main">
 
                 {* Screen-reader heading for easier navigation jumps *}
@@ -208,6 +219,18 @@
                 {/if}
 
                 {call_hook name="Templates::Article::Main"}
+
+                {* Keywords *}
+                {if !empty($publication->getLocalizedData('keywords'))}
+                    <div class="article-keywords">
+                        <h2>{translate key="article.subject"}</h2>
+                        <p>
+                            {foreach name="keywords" from=$publication->getLocalizedData('keywords') item="keyword"}
+                                {$keyword|escape}{if !$smarty.foreach.keywords.last}{translate key="common.commaListSeparator"}{/if}
+                            {/foreach}
+                        </p>
+                    </div>
+                {/if}
 
             </section><!-- .article-main -->
 
@@ -275,7 +298,7 @@
                                                 {if $author->getLocalizedAffiliation()}
                                                     {capture assign="authorName"}{$author->getFullName()|escape}{/capture}
                                                     {capture assign="authorAffiliation"}<span
-                                                            class="affiliation">{$author->getLocalizedAffiliation()|escape}</span>{/capture}
+                                                            class="affiliation">{implode(", ",$author->getLocalizedAffiliation())|escape}</span>{/capture}
                                                     {translate key="submission.authorWithAffiliation" name=$authorName affiliation=$authorAffiliation}
                                                 {else}
                                                     {$author->getFullName()|escape}
@@ -299,18 +322,6 @@
                         <div class="article-references-content">
                             {$article->getCitations()|nl2br}
                         </div>
-                    </div>
-                {/if}
-
-                {* Keywords *}
-                {if !empty($publication->getLocalizedData('keywords'))}
-                    <div class="article-keywords">
-                        <h2>{translate key="article.subject"}</h2>
-                        <p>
-                            {foreach name="keywords" from=$publication->getLocalizedData('keywords') item="keyword"}
-                                {$keyword|escape}{if !$smarty.foreach.keywords.last}{translate key="common.commaListSeparator"}{/if}
-                            {/foreach}
-                        </p>
                     </div>
                 {/if}
 

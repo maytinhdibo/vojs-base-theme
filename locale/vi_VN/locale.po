@@ -48,10 +48,10 @@ msgid "plugins.themes.vojs.options.bootstrapTheme.bootstrap3"
 msgstr "Default Theme"
 
 msgid "vojs.page"
-msgstr "Page"
+msgstr "Trang"
 
 msgid "vojs.organization"
-msgstr "Association of Cardiovascular and Thoracic Surgery of Vietnam"
+msgstr "Hội Phẫu thuật Tim Mạch và Lồng ngực Việt Nam"
 
 msgid "plugins.themes.vojs.developedBy"
-msgstr "Developed by"
+msgstr "Xây dựng website"

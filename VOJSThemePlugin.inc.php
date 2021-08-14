@@ -143,8 +143,42 @@ class VOJSThemePlugin extends ThemePlugin
         // Load Bootstrap
         $this->addScript('bootstrap', 'bootstrap/js/bootstrap.min.js');
 
+        HookRegistry::register('TemplateManager::display', array($this, 'loadTemplateData'));
+
         // Add navigation menu areas for this theme
         $this->addMenuArea(array('primary', 'user'));
+    }
+
+    /**
+     * Load custom data for templates
+     */
+    public function loadTemplateData($hookName, $args)
+    {
+        $request = Application::getRequest();
+        $journal = $request->getJournal();
+
+        $templateMgr = $args[0];
+
+        $templateMgr->assign('journal', $journal);
+        $templateMgr->assign('isPostRequest', $request->isPost());
+        if (!defined('SESSION_DISABLE_INIT')) {
+            $journal = $request->getJournal();
+            if (isset($journal)) {
+                $locales = $journal->getSupportedLocaleNames();
+
+            } else {
+                $site = $request->getSite();
+                $locales = $site->getSupportedLocaleNames();
+            }
+        } else {
+            $locales = AppLocale::getAllLocales();
+            $templateMgr->assign('languageToggleNoUser', true);
+        }
+
+        if (isset($locales) && count($locales) > 1) {
+            $templateMgr->assign('enableLanguageToggle', true);
+            $templateMgr->assign('languageToggleLocales', $locales);
+        }
     }
 
     /**

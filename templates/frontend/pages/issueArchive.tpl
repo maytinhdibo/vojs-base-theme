@@ -34,8 +34,18 @@
 	{else}
 
 		{* List issues *}
-		<div class="issues media-list">
+		<div class="issues media-list" style="margin-top:-5px;margin-bottom:16px">
 			{foreach from=$issues item="issue"}
+				{if $issue->getYear() != $lastYear}
+			        
+			        {if !$notFirstYear}
+			            {assign var=notFirstYear value=1}
+			        {else}
+			            <div class="separator" style="clear:left;"></div>
+			        {/if}
+			        <div style="width: 100%;font-size:20px; margin-top: 27px; margin-bottom: 0.5em">{$issue->getYear()|escape}</div>
+			        	{assign var=lastYear value=$issue->getYear()}  
+			    {/if}
 				{include file="frontend/objects/issue_summary.tpl"}
 			{/foreach}
 		</div>
