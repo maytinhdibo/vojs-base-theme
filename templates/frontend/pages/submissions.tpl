@@ -31,7 +31,7 @@
         {capture assign="register"}<a
             href="{url page="user" op="register"}">{translate key="about.onlineSubmissions.register"}</a>{/capture}
         <div class="alert alert-info">
-            {translate key="about.onlineSubmissions.registrationRequired" login=$login register=$register}
+            {translate key="vojs.registrationRequired" login=$login register=$register}
         </div>
     {/if}
 

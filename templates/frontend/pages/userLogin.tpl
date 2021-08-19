@@ -15,7 +15,7 @@
     {include file="frontend/components/breadcrumbs.tpl" currentTitleKey="user.login"}
 
     <h2>
-        {translate key="about.onlineSubmissions.login"}
+        {translate key="vojs.welcomeTo"}
     </h2>
     <br/>
 

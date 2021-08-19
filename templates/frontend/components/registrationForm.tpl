@@ -16,10 +16,11 @@
  * @uses $email string Email input entry if available
  * @uses $username string Username input entry if available
  *}
+<h3 style="padding-bottom: 0.75em; padding-top: 0.25em">{translate key="vojs.welcomeToRegistration"}</h3>
 <div style="padding-bottom: 2em" class="row">
     <fieldset class="identity col-md-6">
         <legend>
-            {translate key="user.profile"}
+            {translate key="vojs.personalInformation"}
         </legend>
         <div class="fields">
             <div class="form-group given_name">
@@ -42,7 +43,7 @@
             </div>
             <div class="form-group affiliation">
                 <label>
-                    {translate key="user.affiliation"}
+                    {translate key="vojs.institution"}
                     <span class="form-control-required">*</span>
                     <span class="sr-only">{translate key="common.required"}</span>
                     <input class="form-control" type="text" name="affiliation" id="affiliation"

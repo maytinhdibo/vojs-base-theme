@@ -52,3 +52,18 @@ msgstr "Developed by"
 
 msgid "vojs.page"
 msgstr "Page"
+
+msgid "vojs.personalInformation"
+msgstr "Personal Information"
+
+msgid "vojs.welcomeToRegistration"
+msgstr "Welcome to Registration…"
+
+msgid "vojs.welcomeTo"
+msgstr "Welcome to…"
+
+msgid "vojs.institution"
+msgstr "Institution"
+
+msgid "vojs.registrationRequired"
+msgstr "Welcome to the submission site for Journal of Nuclear Science and Technology. {$login} or {$register} to make a submission."
