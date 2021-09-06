@@ -12,7 +12,7 @@
 {if !$currentJournal || $currentJournal->getSetting('publishingMode') != $smarty.const.PUBLISHING_MODE_NONE}
     <form class="navbar-form navbar-left" role="search" method="post" action="{url page="search" op="search"}">
         <div class="input-group">
-            <input class="query form-control" name="query" value="{$searchQuery|escape}" type="text"
+            <input class="query form-control search-vojs" name="query" value="{$searchQuery|escape}" type="text"
                    aria-label="{translate|escape key="common.searchQuery"}" placeholder="">
             <span class="input-group-btn">
   <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
