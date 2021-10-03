@@ -17,7 +17,7 @@
 			</a>
 		</h2>
 		<p class="date">
-			<span class="glyphicon glyphicon-calendar"></span>
+			<span class="fas fa-calendar-day"></span>
 			{$announcement->getDatePosted()|escape}
 		</p>
 		{$announcement->getLocalizedDescriptionShort()|strip_unsafe_html}

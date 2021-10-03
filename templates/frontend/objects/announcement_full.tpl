@@ -17,7 +17,7 @@
 			{$announcement->getLocalizedTitle()|escape}
 		</h1>
 		<small class="date">
-			<span class="glyphicon glyphicon-calendar"></span>
+			<span class="fas fa-calendar-day"></span>
 			{translate key="announcement.postedOn" postDate=$announcement->getDatePosted()|escape}
 		</small>
 	</header>
