@@ -335,9 +335,65 @@
                     <div class="article-references">
                         <h2>{translate key="submission.citations"}</h2>
                         <div class="article-references-content">
-                            {$article->getCitations()|nl2br}
+                            {* {$article->getCitations()|nl2br} *}
                         </div>
                     </div>
+
+                    <style>
+                        {literal}
+                        .refIcon{
+                            height: 1.1em;
+                            vertical-align: middle;
+                            margin: 0 0.2rem;
+                        }
+                        {/literal}
+                    </style>
+                  
+                    <script>
+                        var dataRef = `{$article->getCitations()}`;
+                        var baseUrl = `{$baseUrl}`;
+                    </script>
+
+
+                    {literal}
+                    
+                        <script>
+                            var refItems = dataRef.split("\n");
+                            var refHTMLs = [];
+                            for(var refItem of refItems){
+                                //remove 1.
+                                var rawRefItem = refItem.replace(/^\s*[0-9]+\.\s*/, '');
+                                //remove [1]
+                                rawRefItem = rawRefItem.replace(/^[\s*[0-9]+\]\s*/, '');
+
+                                var DOI = false;
+                                var doiParterns = ["https://doi.org/", "http://doi.org/","doi.org/", "doi: ", "doi:"]; 
+                                for(var doiPartern of doiParterns){
+                                    var pos = refItem.lastIndexOf(doiPartern);
+                                    if(pos==-1){
+                                    }else{
+                                        var doiSub = refItem.substring(pos, refItem.length);
+                                        if(doiPartern == "doi.org/") doiSub = "https://" + doiSub;
+                                        doiSub = doiSub.replace(/doi: /g,'https://doi.org/');
+                                        doiSub = doiSub.replace(/doi:/g,'https://doi.org/');
+
+                                        DOI = doiSub.substring(0, doiSub.indexOf(" ") == -1 ? doiSub.length : doiSub.indexOf(" "));
+                                        if(DOI[DOI.length - 1] == ".") DOI = DOI.substring(0, DOI.length - 1);
+                                        break;
+                                    }
+                                }
+
+                                refHTML = refItem 
+                                + " <a target='_blank' href='https://scholar.google.com/scholar?q=" + rawRefItem + "'>"
+                                + "<img class='refIcon' src='"+baseUrl+"/templates/images/icons/gscholar.png'/>"+ "</a>"
+                                + (DOI? " <a target='_blank' href='" + DOI +"'>"+"<img class='refIcon' src='"+baseUrl+"/templates/images/icons/doi.png'/>"+"</a>":"")
+                                +" </br>";
+                                refHTMLs.push(refHTML);
+                            }
+
+                            document.querySelector(".article-references-content").innerHTML = refHTMLs.join("");
+                        </script>
+                    {/literal}
                 {/if}
 
             </section><!-- .article-details -->
