@@ -358,7 +358,6 @@
                     {literal}
                     
                         <script>
-                        dataRef = dataRef + "Abdul-Khalek R.A., Darzi A.J., Godah M.W., Kilzar L., Lakis C., Agarwal A., Abou-Jaoude E., Meerpohl J.J., Wiercioch W., Santesso N., Brax H., Schünemann H., Akl E.A. Methods used in adaptation of health-related guidelines: a systematic survey. J. Glob. Health. 2017;7(2):1–9. doi: 10.7189/jogh.07.020412. ";
                             var refItems = dataRef.split("\n");
                             var refHTMLs = [];
                             for(var refItem of refItems){
