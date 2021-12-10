@@ -384,9 +384,9 @@
                                 }
 
                                 refHTML = refItem 
-                                + " <a target='_blank' href='https://scholar.google.com/scholar?q=" + rawRefItem + "'>"
-                                + "<img class='refIcon' src='"+baseUrl+"/templates/images/icons/gscholar.png'/>"+ "</a>"
-                                + (DOI? " <a target='_blank' href='" + DOI +"'>"+"<img class='refIcon' src='"+baseUrl+"/templates/images/icons/doi.png'/>"+"</a>":"")
+                                + " <a target='_blank' title='Google Scholar' href='https://scholar.google.com/scholar?q=" + encodeURIComponent(rawRefItem) + "'>"
+                                + "<img class='refIcon' src='" + baseUrl + "/templates/images/icons/gscholar.png'/>"+ "</a>"
+                                + (DOI? " <a target='_blank' title='DOI' href='" + DOI +"'>"+"<img class='refIcon' src='"+baseUrl+"/templates/images/icons/doi.png'/>"+"</a>":"")
                                 +" </br>";
                                 refHTMLs.push(refHTML);
                             }
