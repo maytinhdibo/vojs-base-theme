@@ -20,7 +20,7 @@
  *}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}
 
-<div id="main-content" class="page_index_journal col-md-9">
+<div id="main-content" class="page_index_journal col-md-9 main-content-index-page">
 
     {call_hook name="Templates::Index::journal"}
 
