@@ -45,8 +45,10 @@ a {
   border: 1px solid @primary-color !important;
 }
 
-.pkp_structure_content.container {
-  width: 95% !important;
+@media (min-width: @screen-tablet) {
+  .pkp_structure_content.container {
+    width: 95% !important;
+  }
 }
 
 @media (min-width: 1200px){

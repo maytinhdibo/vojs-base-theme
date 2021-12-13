@@ -69,7 +69,7 @@
         </div>
 
         <div class="navbar-header navbar-dark bg-dark" style="position: relative">
-            <span class="header-bar top-additional-content visible-xs" style="position: absolute; top: 50%; transform: translateY(-50%); font-size: medium;">{$organizationName|upper}</span>
+            <span class="top-additional-content visible-xs top-additional-content-mobile">{$organizationName|upper}</span>
             {* Mobile hamburger menu *}
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu"
                     aria-expanded="false" aria-controls="nav-menu">
