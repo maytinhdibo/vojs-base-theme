@@ -89,7 +89,7 @@
                 <h2>
                     <small>{translate key="issue.fullIssue"}</small>
                 </h2>
-                <div class="btn-group" role="group">
+                <div role="group">
                     {foreach from=$issueGalleys item=galley}
                         {include file="frontend/objects/galley_link.tpl" parent=$issue purchaseFee=$currentJournal->getData('purchaseIssueFee') purchaseCurrency=$currentJournal->getData('currency')}
                     {/foreach}
@@ -106,8 +106,15 @@
                         </h2>
                     {/if}
                     <div class="media-list">
-                        {foreach from=$section.articles item=article}
-                            {include file="frontend/objects/article_summary.tpl"}
+                        {foreach from=$section.articles key=index item=article}
+                            {include file="frontend/objects/article_summary.tpl"
+                            citation = $section.citation[$index].citation
+                            citationStyles = $section.citation[$index].citationStyles
+                            citationDownloads = $section.citation[$index].citationDownloads
+                            citationArgs = $section.citation[$index].citationArgs
+                            citationArgsJson = $section.citation[$index].citationArgsJson
+                            citationIndex = "{$index}.{$article->getId()}"
+                            }
                         {/foreach}
                     </div>
                 {/if}

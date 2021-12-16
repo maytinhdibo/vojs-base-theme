@@ -72,24 +72,85 @@
                     {/foreach}
                 {/if}
 
-                {if !$hideGalleys && $article->getGalleys()}
-                    <div class="btn-group" role="group">
-                        {foreach from=$article->getGalleys() item=galley}
-                            {if $primaryGenreIds}
-                                {assign var="file" value=$galley->getFile()}
-                                {if !$galley->getRemoteUrl() && !($file && in_array($file->getGenreId(), $primaryGenreIds))}
-                                    {continue}
+                {if (!$hideGalleys && $article->getGalleys()) || $citation}
+                    <div role="group">
+                        {if !$hideGalleys && $article->getGalleys()}
+                            {foreach from=$article->getGalleys() item=galley}
+                                {if $primaryGenreIds}
+                                    {assign var="file" value=$galley->getFile()}
+                                    {if !$galley->getRemoteUrl() && !($file && in_array($file->getGenreId(), $primaryGenreIds))}
+                                        {continue}
+                                    {/if}
                                 {/if}
-                            {/if}
-                            {assign var=publication value=$article->getCurrentPublication()}
-                            {assign var="hasArticleAccess" value=$hasAccess}
-                            {if $currentContext->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_OPEN || $publication->getData('accessStatus') == $smarty.const.ARTICLE_ACCESS_OPEN}
-                                {assign var="hasArticleAccess" value=1}
-                            {/if}
-                            {include file="frontend/objects/galley_link.tpl" parent=$article hasAccess=$hasArticleAccess}
-                        {/foreach}
+                                {assign var=publication value=$article->getCurrentPublication()}
+                                {assign var="hasArticleAccess" value=$hasAccess}
+                                {if $currentContext->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_OPEN || $publication->getData('accessStatus') == $smarty.const.ARTICLE_ACCESS_OPEN}
+                                    {assign var="hasArticleAccess" value=1}
+                                {/if}
+                                {include file="frontend/objects/galley_link.tpl" parent=$article hasAccess=$hasArticleAccess}
+                            {/foreach}
+                        {/if}
+                        {if $citation}
+                            <a class="galley-link btn btn-borders btn-xs btn-outline" role="button" data-toggle="modal" data-target="[id='vojsCitation.{$citationIndex}'">
+                                <i class="fas fa-quote-right fa-xs"></i>
+                                {translate|escape key="vojs.citation"}
+                            </a>
+                            <div class="modal fade" id="vojsCitation.{$citationIndex}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="panel panel-default how-to-cite modal-content">
+                                    <div class="modal-header panel-heading">
+                                        <h4>{translate key="vojs.howToCite"}</h4>
+                                    </div>
+                                    <div class="modal-body panel-body">
+                                        <div id="citationOutput.{$citationIndex}" role="region" aria-live="polite">
+                                            {$citation}
+                                        </div>
+                                        <div class="btn-group">
+                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                                            aria-controls="cslCitationFormats">
+                                                        {translate key="vojs.howToCite.citationFormats"}
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        {foreach from=$citationStyles item="citationStyle"}
+                                                            <li>
+                                                                <a
+                                                                        aria-controls="citationOutput.{$citationIndex}"
+                                                                        href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgs}"
+                                                                        data-load-citation="data-load-citation.{$citationIndex}"
+                                                                        data-json-href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgsJson}"
+                                                                >
+                                                                    {$citationStyle.title|escape}
+                                                                </a>
+                                                            </li>
+                                                        {/foreach}
+                                                        {* Download citation formats *}
+                                                        {if count($citationDownloads)}
+                                                            <div class="panel-heading">{translate key="vojs.howToCite.downloadCitation"}</div>
+
+                                                            {foreach from=$citationDownloads item="citationDownload"}
+                                                                <li>
+                                                                    <a href="{url page="citationstylelanguage" op="download" path=$citationDownload.id params=$citationArgs}">
+                                                                        <span class="fa fa-download"></span>
+                                                                        {$citationDownload.title|escape}
+                                                                    </a>
+                                                                </li>
+                                                            {/foreach}
+                                                        {/if}
+                                                    </ul>
+                                                </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/if}
                     </div>
                 {/if}
+
                 {* Page numbers for this article *}
                 {if $article->getPages()}
                     <a class="btn btn-borders btn-xs btn-outline" style="float:right; pointer-events:none">

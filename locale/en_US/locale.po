@@ -52,3 +52,15 @@ msgstr "Developed by"
 
 msgid "vojs.page"
 msgstr "Page"
+
+msgid "vojs.citation"
+msgstr "Citation"
+
+msgid "vojs.howToCite"
+msgstr "How to Cite"
+
+msgid "vojs.howToCite.citationFormats"
+msgstr "More Citation Formats"
+
+msgid "vojs.howToCite.downloadCitation"
+msgstr "Download Citation"

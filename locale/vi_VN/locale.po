@@ -52,3 +52,15 @@ msgstr "Xây dựng website"
 
 msgid "vojs.page"
 msgstr "Trang"
+
+msgid "vojs.citation"
+msgstr "Trích dẫn"
+
+msgid "vojs.howToCite"
+msgstr "Cách trích dẫn"
+
+msgid "vojs.howToCite.citationFormats"
+msgstr "Thêm định dạng trích dẫn"
+
+msgid "vojs.howToCite.downloadCitation"
+msgstr "Tải xuống trích dẫn"
