@@ -64,3 +64,9 @@ msgstr "Thêm định dạng trích dẫn"
 
 msgid "vojs.howToCite.downloadCitation"
 msgstr "Tải xuống trích dẫn"
+
+msgid "vojs.howToCite.close"
+msgstr "Đóng"
+
+msgid "vojs.howToCite.copy"
+msgstr "Sao chép"

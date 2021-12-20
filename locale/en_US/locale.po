@@ -64,3 +64,9 @@ msgstr "More Citation Formats"
 
 msgid "vojs.howToCite.downloadCitation"
 msgstr "Download Citation"
+
+msgid "vojs.howToCite.close"
+msgstr "Close"
+
+msgid "vojs.howToCite.copy"
+msgstr "Copy"

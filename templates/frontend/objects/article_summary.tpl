@@ -105,44 +105,49 @@
                                         <div id="citationOutput.{$citationIndex}" role="region" aria-live="polite">
                                             {$citation}
                                         </div>
-                                        <div class="btn-group">
-                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                                            aria-controls="cslCitationFormats">
-                                                        {translate key="vojs.howToCite.citationFormats"}
-                                                        <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        {foreach from=$citationStyles item="citationStyle"}
-                                                            <li>
-                                                                <a
-                                                                        aria-controls="citationOutput.{$citationIndex}"
-                                                                        href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgs}"
-                                                                        data-load-citation="data-load-citation.{$citationIndex}"
-                                                                        data-json-href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgsJson}"
-                                                                >
-                                                                    {$citationStyle.title|escape}
-                                                                </a>
-                                                            </li>
-                                                        {/foreach}
-                                                        {* Download citation formats *}
-                                                        {if count($citationDownloads)}
-                                                            <div class="panel-heading">{translate key="vojs.howToCite.downloadCitation"}</div>
-
-                                                            {foreach from=$citationDownloads item="citationDownload"}
-                                                                <li>
-                                                                    <a href="{url page="citationstylelanguage" op="download" path=$citationDownload.id params=$citationArgs}">
-                                                                        <span class="fa fa-download"></span>
-                                                                        {$citationDownload.title|escape}
-                                                                    </a>
-                                                                </li>
-                                                            {/foreach}
-                                                        {/if}
-                                                    </ul>
-                                                </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                                    aria-controls="cslCitationFormats.{$citationIndex}">
+                                                {translate key="vojs.howToCite.citationFormats"}
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                {foreach from=$citationStyles item="citationStyle"}
+                                                    <li>
+                                                        <a
+                                                                aria-controls="citationOutput.{$citationIndex}"
+                                                                href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgs}"
+                                                                data-load-citation="data-load-citation.{$citationIndex}"
+                                                                data-json-href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgsJson}"
+                                                        >
+                                                            {$citationStyle.title|escape}
+                                                        </a>
+                                                    </li>
+                                                {/foreach}
+                                                {* Download citation formats *}
+                                                {if count($citationDownloads)}
+                                                    <div class="panel-heading">{translate key="vojs.howToCite.downloadCitation"}</div>
+
+                                                    {foreach from=$citationDownloads item="citationDownload"}
+                                                        <li>
+                                                            <a href="{url page="citationstylelanguage" op="download" path=$citationDownload.id params=$citationArgs}">
+                                                                <span class="fa fa-download"></span>
+                                                                {$citationDownload.title|escape}
+                                                            </a>
+                                                        </li>
+                                                    {/foreach}
+                                                {/if}
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="btn btn-secondary" id="copyBtn.{$citationIndex}" style="margin-bottom: 0; margin-left: 5px;">
+                                            <span class="icon-copy-btn fas fa-copy"></span>
+                                            {translate key="vojs.howToCite.copy"}
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            {translate key="vojs.howToCite.close"}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
