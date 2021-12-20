@@ -13,7 +13,7 @@
     <form class="navbar-form navbar-left" role="search" method="post" action="{url page="search" op="search"}">
         <div class="input-group">
             <input class="query form-control search-vojs" name="query" value="{$searchQuery|escape}" type="text"
-                   aria-label="{translate|escape key="common.searchQuery"}" placeholder="">
+                   aria-label="{translate|escape key="common.searchQuery"}" placeholder="{translate|escape key="common.search"}">
             <span class="input-group-btn">
   <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
   </span>
