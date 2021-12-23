@@ -44,7 +44,7 @@
                 {if $showAuthor}
                     <div class="meta">
                         {if $showAuthor}
-                            <div class="authors" {if !$hideDOI && $pubIdPlugins}style="padding-bottom: 0;"{/if}>
+                            <div class="authors" {if !$hideDOI && $pubIdPlugins} style="padding-bottom: 0;"{/if}>
                                 {$article->getAuthorString()|escape}
                             </div>
                         {/if}
@@ -63,7 +63,7 @@
                         {/if}
                         {if $pubId}
                             {assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-                            <div class="doi" style="padding-bottom: 3px;">
+                            <div class="doi">
                                 <a href="{$doiUrl}">
                                     {$doiUrl}
                                 </a>
@@ -73,7 +73,7 @@
                 {/if}
 
                 {if (!$hideGalleys && $article->getGalleys()) || $citation}
-                    <div role="group">
+                    <div role="group" style="display: inline-block; padding-top: 3px;">
                         {if !$hideGalleys && $article->getGalleys()}
                             {foreach from=$article->getGalleys() item=galley}
                                 {if $primaryGenreIds}
