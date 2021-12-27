@@ -54,7 +54,7 @@ msgid "vojs.page"
 msgstr "Page"
 
 msgid "vojs.citation"
-msgstr "Citation"
+msgstr "Cite"
 
 msgid "vojs.howToCite"
 msgstr "How to Cite"
